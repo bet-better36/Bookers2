@@ -1,0 +1,32 @@
+ <div class="container"> <!-- ここを追加 -->
+  <div class="row">   <!-- ここを追加 -->
+    <div class="col-xs-3">
+<%= render "render/uif" , user:@bookf.user, book:@book %>
+    </div>
+<div class="col-xs-9">
+<h2>Book detail</h2>
+<table class="table table-inverse">
+ <tbody>
+      <tr>
+       <td>
+        <%= link_to user_path(@bookf.user.id) do %>
+          <%= attachment_image_tag @bookf.user, :profile_image, size: "40x40", format: "jpeg", fallback: "no_image.jpg" %><br>
+        <% end %>
+         <%= link_to @bookf.user.name, user_path(@bookf.user) %>
+       </td>
+       <td><%= @bookf.title %></td>
+       <td><%= @bookf.body %></td>
+
+       <% if @bookf.user == current_user %>
+       <td ><%= link_to "Edit", edit_book_path(@bookf.id), class: "btn-sm btn-success" %></td>
+       <td ><%= link_to "Destroy", book_path(@bookf.id), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+       <% end %>
+
+      </tr>
+  </tbody>
+</table>
+
+
+    </div>
+   </div>
+  </div>

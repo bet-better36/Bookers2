@@ -1,0 +1,37 @@
+
+
+<h2>User info</h2>
+
+<table class="table table-inverse">
+  <thead>
+    <tr>
+       <td><%= attachment_image_tag user, :profile_image, size: "100x100",  format: 'jpeg', fallback: "no_image.jpg"%></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  </thead>
+</table>
+<% if user.id == current_user.id%>
+    <%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
+<% end %>
+
+<h2>New book</h2>
+
+ <%= form_for(book) do |f| %>
+    <h4>Title</h4>
+    <div class ="field">
+    <%= f.label :title %>
+    <%= f.text_field :title,class: "col-xs-12" %>
+    </div>
+    <h4>Opinion</h4>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "col-xs-12" %>
+       <%= f.submit "Create Book", class: "col-xs-12 btn btn-primary" %>
+ <% end %>
+
