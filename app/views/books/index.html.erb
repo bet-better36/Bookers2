@@ -18,7 +18,7 @@
     </div>
 
 <div class="col-xs-9">
-<h2>UsersBooks</h2>
+<h2>AllUsersBooks</h2>
 
 <table class="table table-hovor table-inverse">
   <thead>
@@ -26,6 +26,8 @@
       <th></th>
       <th>Title</th>
       <th>Opinion</th>
+      <th>favo</th>
+      <th>comment</th>
     </tr>
   </thead>
 
@@ -39,9 +41,13 @@
         </td>
        <td><%= link_to book.title, book_path(book.id) %></td>
        <td><%= book.body %></td>
+       <td id="favo-<%= book.id %>">
+           <%= render 'favorites/favo', book: book %>
+       </td>
+       <td>コメント数：<%= book.book_comments.count %></td>
       </tr>
-    <% end %>
   </tbody>
+  <% end %>
 </table>
 
 
