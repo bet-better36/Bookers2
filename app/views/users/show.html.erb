@@ -1,5 +1,4 @@
- <div class="container">
-  <div class="row">
+ 
     <div class="col-xs-3">
 <%= render "render/uif", user:@user, book:@bookn %>
     </div>
@@ -21,19 +20,20 @@
       <tr>
        <td>
         <%= link_to user_path(@user.id) do %>
-        <%= attachment_image_tag @user, :profile_image, size: "40x40",  fallback: "no_image.jpg"%></td>
+          <%= attachment_image_tag @user, :profile_image, size: "40x40",
+          fallback: "no_image.jpg"%>
         <% end %>
+       </td>
        <td><%= link_to book.title, book_path(book.id) %></td>
        <td><%= book.body %></td>
        <td>コメント数：<%= book.book_comments.count %></td>
-        <td><%= link_to "Destroy", user_path(@user.id), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
+       <td><%= link_to "Destroy", user_path(@user.id), method: :delete,
+         class: "btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %> 
+       </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 <td><%= link_to "User Destroy", user_path(@user.id), method: :delete, class: "btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %></td>
     </div>
-
-   </div>
-  </div>
 

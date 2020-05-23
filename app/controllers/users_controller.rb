@@ -1,5 +1,17 @@
 class UsersController < ApplicationController
 
+   def following
+      @user  = User.find(params[:id])
+     @users = @user.following
+      render 'relationships/show_following'
+  end
+
+    def followers
+    @user  = User.find(params[:id])
+   @users = @user.follower
+    render 'relationships/show_follower'
+  end
+
   def index
     @book = Book.new
     @users = User.all

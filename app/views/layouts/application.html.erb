@@ -34,15 +34,18 @@
   </div>
 </header>
 
-<% if flash[:notice] %>
-  <p class="success-notice"><%= flash[:notice] %></p>
-<% end %>
 
-<div class="yield">
-   <%= yield %>
+<div class="container">
+  <div class="row">
+    <% if flash[:notice] %>
+      <p class="success-notice"><%= flash[:notice] %></p>
+    <% end %>
+    <div class="yield">
+      <%= yield %>
+    </div>
+  </div>
 </div>
-
-    <footer>
+<footer>
   <div class='container'>
     <div class='row'>
       <div class='col-xs-3 col-xs-offset-9'>

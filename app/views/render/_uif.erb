@@ -1,7 +1,6 @@
 <h2>User info</h2>
 
 <table class="table table-inverse">
-  <thead>
     <tr>
        <td><%= attachment_image_tag user, :profile_image, size: "100x100",  format: 'jpeg', fallback: "no_image.jpg"%></td>
     </tr>
@@ -13,9 +12,29 @@
       <th>introduction</th>
       <th><%= user.introduction %></th>
     </tr>
-  </thead>
+    <tr>
+      <th>follows</th>
+      <th>
+       <%= link_to user.following.count, following_user_path(user)  %>
+        </th>
+    </tr>
+    <tr>
+      <th>follwers</th>
+      <th><%= link_to user.follower.count, followers_user_path(user)  %></th>  
+    </tr>
+    <tr>
+      <th>
+        <% unless user == current_user %>
+        <% if current_user.following?(user) %>
+          <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %>
+        <% else %>
+          <%= link_to 'フォローする', follow_path(user.id), method: :POST %>
+        <% end %>
+        <% end %>
+      </th>
+    </tr>
 </table>
-<% if user.id == current_user.id%>
+<% if user.id == current_user.id %>
     <%= link_to "", edit_user_path(user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
 <% end %>
 
